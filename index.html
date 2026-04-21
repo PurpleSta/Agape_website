@@ -52,11 +52,14 @@ nav{
 .hero-bg-img{
   position:absolute;inset:0;
   background:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1800&auto=format&fit=crop&q=80') center/cover no-repeat;
-  opacity:.15;
+  /* Increased opacity for a clearer but still subtle background */
+  opacity:.28;
+  transition:opacity .3s;
 }
 .hero-overlay{
   position:absolute;inset:0;
-  background:linear-gradient(105deg,rgba(11,31,58,.98) 42%,rgba(11,31,58,.6) 75%,rgba(11,31,58,.3) 100%);
+  /* Slightly softened overlay so the image reads clearer but text remains dominant */
+  background:linear-gradient(105deg,rgba(11,31,58,.96) 42%,rgba(11,31,58,.7) 75%,rgba(11,31,58,.38) 100%);
 }
 
 /* Hero image — tall arched frame, right side */
@@ -666,7 +669,7 @@ footer{background:#060f1e;padding:56px 5vw 28px;color:rgba(255,255,255,.3)}
     <div class="ft-col"><h5>Contact</h5><ul><li><a href="#">Nairobi, Kenya</a></li><li><a href="mailto:info@agapengo.org">info@agapengo.org</a></li><li><a href="https://instagram.com/ngo_agape" target="_blank">@ngo_agape</a></li></ul></div>
   </div>
   <div class="ft-bottom">
-    <span>© 2025 Agape NGO. All rights reserved.</span>
+    <span>© 2026 Agape NGO. All rights reserved.</span>
     <span><a href="https://patricianekesa.vercel.app" target="_blank">PN Softech Solutions</a></span>
   </div>
 </footer>
