@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Agape NGO — Love That Dignifies, Actions That Transform</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0b1f3a;--navy-mid:#122d52;--navy-light:#1a3d6e;
+  --blue:#1d5fa8;--coral:#e85d3d;--coral-light:#f07a62;
+  --gold:#c9922a;--gold-light:#f0c96e;
+  --white:#fff;--off:#f7f9fc;--tmid:#3a5070;--tlight:#7a92b0;
+  --border:rgba(29,95,168,.12);
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--navy);background:var(--white);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;height:72px;
+  background:rgba(11,31,58,.97);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  transition:box-shadow .3s;
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{height:38px;width:38px;object-fit:contain;border-radius:6px}
+.nav-logo-text{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:#fff;letter-spacing:.04em}
+.nav-logo-text span{color:var(--coral-light)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--coral-light)}
+.nav-cta{background:var(--coral)!important;color:#fff!important;padding:.42rem 1.2rem;border-radius:3px}
+.nav-cta:hover{background:var(--coral-light)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.7);border-radius:2px}
+.mob-menu{display:none;position:fixed;top:72px;left:0;right:0;z-index:190;background:rgba(11,31,58,.98);backdrop-filter:blur(14px);padding:1.5rem 5vw 2rem;border-bottom:1px solid rgba(255,255,255,.06);flex-direction:column;gap:.3rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:.85rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.05);transition:color .2s}
+.mob-menu a:hover{color:var(--coral-light)}
+.mob-menu .mob-cta{color:var(--coral-light)!important;border-bottom:none!important;margin-top:.5rem}
+
+/* ── HERO ── */
+#home{
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;
+  background:var(--navy);overflow:hidden;
+}
+.hero-bg-img{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1800&auto=format&fit=crop&q=80') center/cover no-repeat;
+  opacity:.15;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(105deg,rgba(11,31,58,.98) 42%,rgba(11,31,58,.6) 75%,rgba(11,31,58,.3) 100%);
+}
+
+/* Hero image — tall arched frame, right side */
+.hero-img-panel{
+  position:absolute;
+  right:6vw;top:50%;transform:translateY(-50%);
+  width:380px;height:520px;
+  border-radius:220px 220px 8px 8px;
+  overflow:hidden;
+  box-shadow:0 48px 96px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.09);
+  flex-shrink:0;
+}
+.hero-img-panel img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center top;
+  display:block;
+}
+.hero-img-panel::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:6px;
+  background:linear-gradient(90deg,var(--coral),var(--coral-light),var(--coral));
+}
+
+.hero-content{
+  position:relative;z-index:2;
+  padding:130px 5vw 80px;
+  max-width:600px;
+  animation:fadeUp .9s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.7rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--coral-light);margin-bottom:1.2rem;
+}
+.eyebrow::before{content:'';width:30px;height:1px;background:var(--coral)}
+
+h1.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.8rem,4.8vw,4.4rem);
+  font-weight:300;line-height:1.1;
+  color:#fff;margin-bottom:.9rem;
+}
+h1.hero-title em{font-style:italic;color:var(--coral-light)}
+h1.hero-title strong{font-weight:600;display:block}
+
+.hero-tagline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.05rem;font-style:italic;font-weight:300;
+  color:rgba(255,255,255,.5);
+  border-left:2px solid rgba(232,93,61,.5);
+  padding-left:1rem;margin-bottom:1.5rem;line-height:1.6;
+}
+.hero-desc{font-size:.92rem;line-height:1.82;color:rgba(255,255,255,.56);margin-bottom:2.2rem;max-width:480px}
+
+.btn-row{display:flex;gap:.9rem;flex-wrap:wrap}
+.btn-coral{
+  display:inline-block;padding:.82rem 1.8rem;
+  background:var(--coral);color:#fff;text-decoration:none;
+  font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  border-radius:3px;border:2px solid var(--coral);transition:all .25s;
+}
+.btn-coral:hover{background:var(--coral-light);border-color:var(--coral-light)}
+.btn-ghost{
+  display:inline-block;padding:.82rem 1.8rem;
+  background:transparent;color:#fff;text-decoration:none;
+  font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  border-radius:3px;border:2px solid rgba(255,255,255,.22);transition:all .25s;
+}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.07)}
+
+.hero-stats{
+  display:flex;gap:2.5rem;
+  margin-top:2.8rem;padding-top:2rem;
+  border-top:1px solid rgba(255,255,255,.07);
+  animation:fadeUp .9s .25s ease both;
+}
+.st-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--coral-light);line-height:1}
+.st-lbl{font-size:.67rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.38);margin-top:4px}
+
+.scroll-down{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:rgba(255,255,255,.22);font-size:.63rem;letter-spacing:.15em;text-transform:uppercase;
+  z-index:2;animation:bob 2.2s infinite;
+}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+.scroll-down svg{width:18px;height:18px;stroke:rgba(255,255,255,.2);fill:none;stroke-width:1.5}
+
+/* ── SECTIONS ── */
+section{padding:88px 5vw}
+.sec-label{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.68rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--coral);margin-bottom:.85rem;
+}
+.sec-label::before{content:'';width:26px;height:1px;background:var(--coral)}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.9rem,3.2vw,2.75rem);
+  font-weight:300;line-height:1.22;color:var(--navy);margin-bottom:.75rem;
+}
+.sec-title em{font-style:italic;color:var(--coral)}
+.sec-sub{font-size:.92rem;line-height:1.8;color:var(--tmid);max-width:540px}
+
+/* ── ABOUT ── */
+#about{background:var(--off)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;margin-top:3rem}
+.about-img-wrap{position:relative}
+.about-img-main{
+  width:100%;aspect-ratio:4/5;
+  border-radius:4px;overflow:hidden;
+  box-shadow:0 24px 60px rgba(11,31,58,.15);
+}
+.about-img-main img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.about-badge{
+  position:absolute;bottom:-20px;right:-20px;
+  background:var(--navy);color:#fff;
+  padding:1.2rem 1.4rem;border-radius:4px;width:155px;
+  box-shadow:0 16px 40px rgba(11,31,58,.3);
+}
+.about-badge .num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;color:var(--coral-light);line-height:1}
+.about-badge .lbl{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.44);margin-top:5px}
+.about-text p{font-size:.92rem;line-height:1.82;color:var(--tmid);margin-bottom:1rem}
+.values{list-style:none;margin-top:1.5rem;display:flex;flex-direction:column;gap:.8rem}
+.values li{display:flex;align-items:flex-start;gap:12px;font-size:.87rem;color:var(--tmid)}
+.vi{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:rgba(232,93,61,.1);display:flex;align-items:center;justify-content:center;margin-top:1px}
+.vi svg{width:13px;height:13px;stroke:var(--coral);fill:none;stroke-width:2}
+
+/* ── QUOTE STRIP ── */
+.quote-strip{background:var(--navy);padding:56px 5vw;text-align:center;position:relative;overflow:hidden}
+.quote-strip::before{content:'\201C';position:absolute;top:-30px;left:4vw;font-family:'Cormorant Garamond',serif;font-size:17rem;font-weight:300;color:rgba(255,255,255,.025);line-height:1;pointer-events:none}
+.quote-strip blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(1.25rem,2.3vw,1.85rem);font-style:italic;font-weight:300;color:#fff;max-width:780px;margin:0 auto .8rem;line-height:1.65}
+.quote-strip cite{font-style:normal;font-size:.73rem;letter-spacing:.18em;text-transform:uppercase;color:var(--coral-light)}
+
+/* ── PROGRAMS ── */
+#programs{background:var(--white)}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.prog-card{background:var(--off);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.prog-card:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(11,31,58,.1)}
+.prog-img{height:215px;overflow:hidden;position:relative}
+.prog-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .5s}
+.prog-card:hover .prog-img img{transform:scale(1.05)}
+.prog-num{position:absolute;top:12px;right:14px;font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:600;color:rgba(255,255,255,.15);line-height:1;pointer-events:none}
+.prog-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,31,58,.45) 0%,transparent 55%)}
+.prog-body{padding:1.5rem}
+.prog-body h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--navy);margin-bottom:.5rem}
+.prog-body p{font-size:.86rem;line-height:1.72;color:var(--tmid)}
+.prog-tag{display:inline-block;margin-top:.9rem;font-size:.67rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--coral);padding:3px 9px;border:1px solid rgba(232,93,61,.25);border-radius:2px}
+
+/* ── IMPACT ── */
+.impact-strip{
+  background:linear-gradient(135deg,var(--navy-mid),var(--navy-light));
+  padding:52px 5vw;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2rem;text-align:center;
+}
+.imp-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:var(--coral-light);line-height:1}
+.imp-lbl{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-top:7px}
+
+/* ── GALLERY ── */
+#gallery{background:var(--off)}
+.gallery-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.2rem;flex-wrap:wrap;gap:1rem}
+.gal-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:260px 220px;
+  gap:.7rem;
+}
+.gal-item{overflow:hidden;border-radius:4px;position:relative;cursor:pointer;background:var(--navy-mid)}
+.gal-item:nth-child(1){grid-column:span 2;grid-row:span 2}
+.gal-item:nth-child(5){grid-column:span 2}
+.gal-item img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  display:block;
+  transition:transform .55s cubic-bezier(.25,.46,.45,.94);
+}
+.gal-item:hover img{transform:scale(1.06)}
+.gal-overlay{
+  position:absolute;inset:0;
+  background:rgba(11,31,58,.7);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .3s;
+  backdrop-filter:blur(4px);
+}
+.gal-item:hover .gal-overlay{opacity:1}
+.gal-overlay span{color:#fff;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:0 1rem}
+
+/* ── DONATE ── */
+#donate{background:var(--white)}
+/* Side-by-side equal-top alignment */
+.donate-wrap{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4vw;
+  margin-top:3rem;
+  align-items:start;
+}
+.donate-left p{font-size:.92rem;line-height:1.82;color:var(--tmid);margin-bottom:1rem}
+.tiers{display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem}
+.tier{
+  display:flex;align-items:center;gap:1rem;
+  padding:.88rem 1.1rem;border:1px solid var(--border);
+  border-radius:4px;cursor:pointer;transition:all .2s;background:var(--off);
+}
+.tier:hover,.tier.active{border-color:var(--coral);background:rgba(232,93,61,.04)}
+.t-amt{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;color:var(--navy);min-width:70px}
+.t-desc{font-size:.84rem;color:var(--tmid);flex:1}
+
+/* Donate panel — same visual weight as left col */
+.donate-panel{
+  background:var(--navy);border-radius:4px;
+  padding:2.4rem;color:#fff;
+}
+.donate-panel-header{
+  padding-bottom:1.4rem;
+  margin-bottom:1.6rem;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.donate-panel h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:300;
+  margin-bottom:.3rem;
+}
+.donate-panel .sub{font-size:.82rem;color:rgba(255,255,255,.42);line-height:1.6}
+
+.fg{margin-bottom:.95rem}
+.fg label{display:block;font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.35rem}
+.fg input,.fg select{
+  width:100%;padding:.7rem .95rem;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:3px;color:#fff;
+  font-family:'DM Sans',sans-serif;font-size:.88rem;
+  outline:none;transition:border-color .2s;
+}
+.fg input:focus,.fg select:focus{border-color:rgba(255,255,255,.32)}
+.fg select option{background:var(--navy)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.btn-give{
+  width:100%;margin-top:.4rem;padding:.92rem;
+  background:var(--coral);color:#fff;
+  border:none;border-radius:3px;
+  font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;
+  letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .25s;
+}
+.btn-give:hover{background:var(--coral-light)}
+.secure{
+  display:flex;align-items:center;gap:6px;justify-content:center;
+  margin-top:.8rem;font-size:.67rem;color:rgba(255,255,255,.28);letter-spacing:.08em;
+}
+
+/* ── CONTACT ── */
+#contact{background:var(--off)}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:5vw;margin-top:2.8rem;align-items:start}
+.c-info{display:flex;flex-direction:column;gap:1.4rem}
+.c-block h4{font-size:.68rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--coral);margin-bottom:.35rem}
+.c-block p{font-size:.88rem;line-height:1.72;color:var(--tmid)}
+.socials{display:flex;gap:.65rem;margin-top:.5rem}
+.soc{width:36px;height:36px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .2s}
+.soc:hover{background:var(--coral)}
+.soc svg{width:15px;height:15px;fill:#fff}
+.c-form{background:#fff;border:1px solid var(--border);border-radius:4px;padding:2.4rem}
+.c-form h3{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:400;color:var(--navy);margin-bottom:1.4rem}
+.cf{margin-bottom:.9rem}
+.cf label{display:block;font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:var(--tlight);margin-bottom:.35rem}
+.cf input,.cf textarea,.cf select{width:100%;padding:.7rem .95rem;background:var(--off);border:1px solid var(--border);border-radius:3px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--navy);outline:none;transition:border-color .2s;resize:none}
+.cf input:focus,.cf textarea:focus{border-color:var(--coral);background:#fff}
+.btn-send{width:100%;padding:.9rem;background:var(--navy);color:#fff;border:none;border-radius:3px;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:.4rem}
+.btn-send:hover{background:var(--coral)}
+
+/* ── FOOTER ── */
+footer{background:#060f1e;padding:56px 5vw 28px;color:rgba(255,255,255,.3)}
+.ft{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:1.8rem}
+.ft-brand .fl{display:flex;align-items:center;gap:10px;margin-bottom:.75rem;text-decoration:none}
+.ft-brand .fl img{height:34px;width:34px;object-fit:contain;border-radius:5px}
+.ft-brand .fl span{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:#fff}
+.ft-brand .fl span em{font-style:normal;color:var(--coral-light)}
+.ft-brand p{font-size:.82rem;line-height:1.72;max-width:210px}
+.ft-tagline{font-size:.76rem;font-style:italic;color:var(--coral-light);margin-top:.5rem;opacity:.75}
+.ft-col h5{font-size:.67rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.48);margin-bottom:.9rem}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+.ft-col ul li a{font-size:.82rem;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.ft-col ul li a:hover{color:var(--coral-light)}
+.ft-bottom{display:flex;justify-content:space-between;align-items:center;font-size:.74rem;flex-wrap:wrap;gap:.5rem}
+.ft-bottom a{color:var(--coral-light);text-decoration:none}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .about-grid,.contact-grid{grid-template-columns:1fr}
+  .donate-wrap{grid-template-columns:1fr}
+  .prog-grid{grid-template-columns:1fr 1fr}
+  .gal-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gal-item:nth-child(1){grid-column:span 2}
+  .gal-item:nth-child(5){grid-column:span 2}
+  .impact-strip{grid-template-columns:repeat(2,1fr)}
+  .ft{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-img-panel{display:none}
+  .about-badge{bottom:-14px;right:-8px}
+}
+@media(max-width:600px){
+  .prog-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr}
+  .gal-item:nth-child(1),.gal-item:nth-child(5){grid-column:span 1}
+  .impact-strip{grid-template-columns:1fr 1fr}
+  .ft{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#home">
+    <img src="data:image/jpeg;base64,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" alt="Agape NGO Logo"/>
+    <span class="nav-logo-text">Ag<em>α</em>pe</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#donate" class="nav-cta">Donate</a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#home" onclick="closeMob()">Home</a>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#programs" onclick="closeMob()">Programs</a>
+  <a href="#gallery" onclick="closeMob()">Gallery</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="#donate" class="mob-cta" onclick="closeMob()">→ Donate Now</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-img"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-img-panel">
+    <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&auto=format&fit=crop&q=85" alt="Children supported by Agape NGO"/>
+  </div>
+
+  <div class="hero-content">
+    <div class="eyebrow">Faith-Based NGO · Community · Hope</div>
+    <h1 class="hero-title">
+      Love that <em>dignifies,</em>
+      <strong>actions that transform</strong>
+    </h1>
+    <p class="hero-tagline"><em>"Amor que dignifica, acciones que transforman"</em></p>
+    <p class="hero-desc">Agape is a faith-based non-governmental organisation committed to the transformation of communities through unconditional love, education, and the holistic development of vulnerable children and families.</p>
+    <div class="btn-row">
+      <a href="#programs" class="btn-coral">Our Programs</a>
+      <a href="#donate" class="btn-ghost">Support Us</a>
+    </div>
+  </div>
+
+  <div class="scroll-down">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    Scroll
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <div class="about-img-main">
+        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900&auto=format&fit=crop&q=85" alt="Agape volunteers with children"/>
+      </div>
+      <div class="about-badge"><div class="num">2016</div><div class="lbl">Founded</div></div>
+    </div>
+    <div class="reveal d1">
+      <div class="sec-label">Who We Are</div>
+      <h2 class="sec-title">Rooted in faith,<br><em>moving in love</em></h2>
+      <div class="about-text">
+        <p>Agape was born from the conviction that unconditional love — the agape described in 1 Corinthians — is not merely a spiritual concept but a practical call to action. We began with a small group of volunteers and a single community in need.</p>
+        <p>Today we walk alongside children, families, and entire communities — providing education, mentorship, welfare support, and development programmes that create lasting change rooted in dignity and faith.</p>
+      </div>
+      <ul class="values">
+        <li>
+          <div class="vi"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+          <div><strong style="color:var(--navy)">Unconditional Love</strong> — Every person matters, regardless of circumstance.</div>
+        </li>
+        <li>
+          <div class="vi"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <div><strong style="color:var(--navy)">Holistic Development</strong> — Addressing spirit, mind, and body together.</div>
+        </li>
+        <li>
+          <div class="vi"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><strong style="color:var(--navy)">Sustainable Impact</strong> — Building capacity so communities thrive long-term.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-strip reveal">
+  <blockquote>"We do not serve because the world will change in a day — we serve because every child deserves to know they are loved today."</blockquote>
+  <cite>— Agape Mission</cite>
+</div>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="reveal">
+    <div class="sec-label">What We Do</div>
+    <h2 class="sec-title">Programs <em>changing lives</em></h2>
+    <p class="sec-sub">Our work is organised around three pillars that reflect our belief in the whole-person development of every individual we serve.</p>
+  </div>
+  <div class="prog-grid">
+    <div class="prog-card reveal d1">
+      <div class="prog-img">
+        <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=700&auto=format&fit=crop&q=80" alt="Child Welfare"/>
+        <div class="prog-overlay"></div><div class="prog-num">01</div>
+      </div>
+      <div class="prog-body">
+        <h3>Child Welfare & Care</h3>
+        <p>We provide orphaned and vulnerable children with safe shelter, nutritious meals, healthcare access, and a nurturing environment grounded in faith and love.</p>
+        <span class="prog-tag">Children · Protection</span>
+      </div>
+    </div>
+    <div class="prog-card reveal d2">
+      <div class="prog-img">
+        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700&auto=format&fit=crop&q=80" alt="Education"/>
+        <div class="prog-overlay"></div><div class="prog-num">02</div>
+      </div>
+      <div class="prog-body">
+        <h3>Education for All</h3>
+        <p>Scholarships, school supplies, tutoring and mentorship programmes ensuring every child — regardless of background — can access quality education.</p>
+        <span class="prog-tag">Education · Scholarships</span>
+      </div>
+    </div>
+    <div class="prog-card reveal d3">
+      <div class="prog-img">
+        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=700&auto=format&fit=crop&q=80" alt="Community Development"/>
+        <div class="prog-overlay"></div><div class="prog-num">03</div>
+      </div>
+      <div class="prog-body">
+        <h3>Community Development</h3>
+        <p>Vocational training, economic empowerment workshops, and infrastructure support that equip communities to build dignified, self-sustaining futures together.</p>
+        <span class="prog-tag">Community · Empowerment</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT STRIP -->
+<div class="impact-strip reveal">
+  <div><div class="imp-num">500+</div><div class="imp-lbl">Children Supported</div></div>
+  <div><div class="imp-num">200+</div><div class="imp-lbl">Scholarships Awarded</div></div>
+  <div><div class="imp-num">12</div><div class="imp-lbl">Communities Reached</div></div>
+  <div><div class="imp-num">50+</div><div class="imp-lbl">Active Volunteers</div></div>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-head reveal">
+    <div>
+      <div class="sec-label">Our Work in Action</div>
+      <h2 class="sec-title">God's love <em>at work</em></h2>
+    </div>
+    <a href="#contact" class="btn-coral" style="flex-shrink:0">Become a Volunteer</a>
+  </div>
+  <div class="gal-grid reveal">
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=900&auto=format&fit=crop&q=80" alt="Children Program"/>
+      <div class="gal-overlay"><span>Children's Welfare Program</span></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=600&auto=format&fit=crop&q=80" alt="Education"/>
+      <div class="gal-overlay"><span>Education Program</span></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600&auto=format&fit=crop&q=80" alt="Community"/>
+      <div class="gal-overlay"><span>Community Outreach</span></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1607748851687-ba9a10438621?w=600&auto=format&fit=crop&q=80" alt="Volunteers"/>
+      <div class="gal-overlay"><span>Volunteer Events</span></div>
+    </div>
+    <div class="gal-item">
+      <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=900&auto=format&fit=crop&q=80" alt="Faith and Community"/>
+      <div class="gal-overlay"><span>Faith & Community</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section id="donate">
+  <div class="reveal">
+    <div class="sec-label">Give Today</div>
+    <h2 class="sec-title">Your gift <em>transforms lives</em></h2>
+    <p class="sec-sub">Every contribution — no matter the size — goes directly to the children and communities we serve. Give generously. Give in love.</p>
+  </div>
+
+  <div class="donate-wrap reveal">
+    <!-- LEFT: context + tiers -->
+    <div class="donate-left">
+      <p>When you give to Agape, you are not just making a donation — you are extending the love of God to a child who needs it most. Your support funds meals, school fees, mentorship, and community programs that create real, lasting change.</p>
+      <p>We are fully committed to transparency and faithful stewardship of every gift entrusted to us.</p>
+      <div class="tiers">
+        <div class="tier active" onclick="setTier(this,'25')"><div class="t-amt">$25</div><div class="t-desc">School supplies for one child for a term</div></div>
+        <div class="tier" onclick="setTier(this,'50')"><div class="t-amt">$50</div><div class="t-desc">Nutritious meals for a child for one month</div></div>
+        <div class="tier" onclick="setTier(this,'100')"><div class="t-amt">$100</div><div class="t-desc">School fees sponsorship for one term</div></div>
+        <div class="tier" onclick="setTier(this,'250')"><div class="t-amt">$250</div><div class="t-desc">Funds a full community development workshop</div></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: form panel -->
+    <div class="donate-panel">
+      <div class="donate-panel-header">
+        <h3>Make a Donation</h3>
+        <p class="sub">Secure and encrypted. All major cards accepted.</p>
+      </div>
+      <div class="row2">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="Jane"/></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Doe"/></div>
+      </div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="jane@email.com"/></div>
+      <div class="fg"><label>Donation Amount (USD)</label><input type="number" id="donateAmt" value="25" placeholder="Enter amount"/></div>
+      <div class="fg">
+        <label>Frequency</label>
+        <select><option>One-time gift</option><option>Monthly giving</option><option>Annual giving</option></select>
+      </div>
+      <button class="btn-give">Give Now — In Love</button>
+      <div class="secure">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Secure encrypted payment
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="sec-label">Get In Touch</div>
+    <h2 class="sec-title">Connect with <em>Agape</em></h2>
+    <p class="sec-sub">Whether you want to volunteer, partner, donate in kind, or simply learn more — we'd love to hear from you.</p>
+  </div>
+  <div class="contact-grid reveal">
+    <div class="c-info">
+      <div class="c-block"><h4>Location</h4><p>Agape NGO Headquarters<br>Nairobi, Kenya</p></div>
+      <div class="c-block"><h4>Email</h4><p>info@agapengo.org<br>partnerships@agapengo.org</p></div>
+      <div class="c-block"><h4>Phone</h4><p>+254 700 000 000</p></div>
+      <div class="c-block">
+        <h4>Follow Our Work</h4>
+        <div class="socials">
+          <a href="https://www.instagram.com/ngo_agape" target="_blank" class="soc" title="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="soc" title="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="soc" title="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="c-form">
+      <h3>Send us a message</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+        <div class="cf"><label>Name</label><input type="text" placeholder="Your name"/></div>
+        <div class="cf"><label>Email</label><input type="email" placeholder="Your email"/></div>
+      </div>
+      <div class="cf" style="margin-top:.75rem">
+        <label>Subject</label>
+        <select><option>I want to volunteer</option><option>Partnership enquiry</option><option>Donation enquiry</option><option>General question</option></select>
+      </div>
+      <div class="cf" style="margin-top:.75rem">
+        <label>Message</label>
+        <textarea rows="5" placeholder="Tell us how you'd like to get involved..."></textarea>
+      </div>
+      <button class="btn-send">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="ft-brand">
+      <a class="fl" href="#home">
+        <img src="data:image/jpeg;base64,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" alt="Agape Logo"/>
+        <span>Ag<em>α</em>pe</span>
+      </a>
+      <p>A faith-based NGO transforming lives through love, education, and community development. Rooted in Christ. Moving in service.</p>
+      <p class="ft-tagline">"Amor que dignifica, acciones que transforman"</p>
+    </div>
+    <div class="ft-col"><h5>Navigate</h5><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#programs">Programs</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#donate">Donate</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    <div class="ft-col"><h5>Programs</h5><ul><li><a href="#programs">Child Welfare</a></li><li><a href="#programs">Education</a></li><li><a href="#programs">Community Dev.</a></li></ul></div>
+    <div class="ft-col"><h5>Contact</h5><ul><li><a href="#">Nairobi, Kenya</a></li><li><a href="mailto:info@agapengo.org">info@agapengo.org</a></li><li><a href="https://instagram.com/ngo_agape" target="_blank">@ngo_agape</a></li></ul></div>
+  </div>
+  <div class="ft-bottom">
+    <span>© 2025 Agape NGO. All rights reserved.</span>
+    <span><a href="https://patricianekesa.vercel.app" target="_blank">PN Softech Solutions</a></span>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Nav shadow on scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').style.boxShadow=
+    window.scrollY>50?'0 4px 30px rgba(0,0,0,.4)':'none';
+});
+
+// Mobile menu
+document.getElementById('ham').addEventListener('click',()=>
+  document.getElementById('mobMenu').classList.toggle('open'));
+function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
+
+// Donation tier picker
+function setTier(el,amt){
+  document.querySelectorAll('.tier').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('donateAmt').value=amt;
+}
+</script>
+</body>
+</html>
